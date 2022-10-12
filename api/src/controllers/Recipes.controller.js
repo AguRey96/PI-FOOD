@@ -5,7 +5,7 @@ const getRecipe = async (name) => {
   const recipes = await getAllInfo();
   if (name) {
     const recipeName = recipes.filter((r) => {
-      return r.name.includes(name.toLowerCase());
+      return r.name.toLowerCase().includes(name.toLowerCase());
     });
     if (recipeName.length) return recipeName;
     else throw new Error("Recipe not found with that name");
@@ -25,7 +25,6 @@ const getRecipeById = async (id) => {
         },
       ],
     });
-    console.log(finded);
     if (finded) return finded;
     else throw new Error("Recipe not found with that id");
   }

@@ -2,8 +2,10 @@ const { Diet } = require("../db");
 
 let dietsArr = [
   "gluten free",
-  "dairy free",
   "ketogenic",
+  "vegetarian",
+  "lacto vegetarian",
+  "ovo vegetarian",
   "lacto ovo vegetarian",
   "vegan",
   "pescatarian",
@@ -11,6 +13,7 @@ let dietsArr = [
   "primal",
   "fodmap friendly",
   "whole 30",
+  "dairy free",
 ];
 
 const getDiet = () => {
