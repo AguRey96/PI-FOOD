@@ -9,7 +9,7 @@ const getApiInfo = async () => {
   );
   apiData = await apiSpoon.data.results.map((recipes) => ({
     id: recipes.id.toString(),
-    name: recipes.title.toLowerCase(),
+    name: recipes.title,
     summary: recipes.summary.replace(/<[^>]+>/g, ""),
     healthyScore: recipes.healthScore,
     steps: recipes.analyzedInstructions[0]?.steps.map((s) => ({

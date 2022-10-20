@@ -23,12 +23,12 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
-      healthScore: {
+      healthyScore: {
         type: DataTypes.INTEGER,
       },
 
       steps: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.JSON),
       },
 
       image: {

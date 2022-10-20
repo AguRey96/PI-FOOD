@@ -1,11 +1,17 @@
-import './App.css';
+import "./App.css";
+import { Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage/LandingPage";
+import Home from "./components/Home/Home";
+import Details from "./components/Details/Details";
+import Form from "./components/Create/Form";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <h1>Henry Food</h1>
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/home" component={Home} />
+      <Route path="/recipes/:id" component={Details} />
+      <Route path="/create" component={Form} />
     </div>
   );
 }
-
-export default App;

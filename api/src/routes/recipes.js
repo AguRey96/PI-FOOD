@@ -9,7 +9,6 @@ const {
 router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
-    console.log(req.query);
     const recipe = await getRecipe(name);
     res.status(200).send(recipe);
   } catch (error) {
@@ -27,15 +26,15 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
-    const { name, summary, steps, healthScore, image, diets, dishTypes } =
+    const { name, summary, steps, healthyScore, image, diets, dishTypes } =
       req.body;
     const result = await postRecipe(
       name,
       summary,
       steps,
-      healthScore,
+      healthyScore,
       image,
       diets,
       dishTypes

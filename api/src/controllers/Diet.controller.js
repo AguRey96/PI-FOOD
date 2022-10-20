@@ -22,8 +22,8 @@ const getDiet = () => {
       where: { name: dietName },
     });
   });
-  const dietTypes = Diet.findAll();
-  return dietTypes;
+  const diets = Diet.findAll();
+  return diets;
 };
 
 module.exports = getDiet;
