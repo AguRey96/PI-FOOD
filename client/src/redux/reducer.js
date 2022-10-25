@@ -96,7 +96,7 @@ export default function rootReducer(state = initialState, action) {
     }
 
     case FILTER_BY_DIET: {
-      filterDiets =
+      let filterDiets =
         action.payload === "All"
           ? state.recipes
           : state.recipes.filter((e) => {
