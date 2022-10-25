@@ -12,14 +12,14 @@ export const FILTER_BY_DIET = "FILTER_BY_DIET";
 
 export const getRecipes = () => {
   return async (dispatch) => {
-    let allRecipes = await axios.get("http://localhost:3001/recipes");
+    let allRecipes = await axios.get("/recipes");
     return dispatch({ type: GET_RECIPES, payload: allRecipes.data });
   };
 };
 
 export const getDetail = (id) => {
   return async (dispatch) => {
-    let recipeId = await axios.get(`http://localhost:3001/recipes/${id}`);
+    let recipeId = await axios.get(`/recipes/${id}`);
     return dispatch({ type: GET_DETAILS, payload: recipeId.data });
   };
 };
@@ -27,9 +27,7 @@ export const getDetail = (id) => {
 export const getRecipeByName = (name) => {
   return async (dispatch) => {
     try {
-      let response = await axios.get(
-        `http://localhost:3001/recipes?name=${name}`
-      );
+      let response = await axios.get(`/recipes?name=${name}`);
       return dispatch({ type: GET_BYNAME, payload: response.data });
     } catch (error) {
       return dispatch({ type: GET_BYNAME_ERROR, payload: name });
@@ -39,14 +37,14 @@ export const getRecipeByName = (name) => {
 
 export const getDiet = () => {
   return async (dispatch) => {
-    let diet = await axios.get("http://localhost:3001/diets");
+    let diet = await axios.get("/diets");
     return dispatch({ type: GET_DIET, payload: diet.data });
   };
 };
 
 export const postRecipe = (payload) => {
   return async () => {
-    return await axios.post("http://localhost:3001/recipes/create", payload);
+    return await axios.post("/recipes/create", payload);
   };
 };
 

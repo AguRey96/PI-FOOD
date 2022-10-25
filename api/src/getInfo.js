@@ -3,6 +3,7 @@ const { Recipe, Diet } = require("./db");
 const { API_KEY } = process.env;
 // Api Information
 //https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true
+//`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
 //"https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5"
 const getApiInfo = async () => {
   const apiSpoon = await axios.get(
