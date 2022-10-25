@@ -63,7 +63,6 @@ export default function rootReducer(state = initialState, action) {
 
     case SORT_BY_NAME: {
       let sortName = [...state.allRecipes];
-      console.log(action.payload);
       sortName.sort((a, b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) {
           return action.payload === "A-Z" ? 1 : -1;
@@ -97,7 +96,7 @@ export default function rootReducer(state = initialState, action) {
     }
 
     case FILTER_BY_DIET: {
-      let filterDiets =
+      filterDiets =
         action.payload === "All"
           ? state.recipes
           : state.recipes.filter((e) => {

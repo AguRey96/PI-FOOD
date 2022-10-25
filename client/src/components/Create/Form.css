@@ -24,6 +24,10 @@
   border-radius: 20px;
 }
 
+.form::-webkit-scrollbar {
+  display: none;
+}
+
 .form input {
   margin-top: 2px;
   width: 35%;
