@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRecipe, getDiet } from "../../redux/actions";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { validatorName, validatorSummary } from "./validatorFunctions";
+import "./Form.css";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export default function Form() {
 
   useEffect(() => {
     dispatch(getDiet());
-  }, []);
+  }, [dispatch]);
 
   const handlerChange = (e) => {
     setInput({
@@ -127,6 +128,11 @@ export default function Form() {
     history.push("/home");
   };
 
+  const handlerHome = (e) => {
+    e.preventDefault();
+    history.push("/home");
+  };
+
   const validatior = (data) => {
     let error = {};
     validatorName(data.name) && (error.name = validatorName(data.name));
@@ -136,14 +142,19 @@ export default function Form() {
   };
 
   return (
-    <div>
-      <Link to="/home">
-        <button>home</button>
-      </Link>
-      <h1>CREAR RECETA</h1>
-      <form onSubmit={(e) => handlerSubmit(e)}>
-        <div>
-          <label>Name: </label>
+    <div className="linkform">
+      <div>
+        <button className="btnHome" onClick={handlerHome}>
+          <p>
+            <span>Home</span>
+          </p>
+        </button>
+      </div>
+
+      <form className="form" onSubmit={(e) => handlerSubmit(e)}>
+        <h1>CREAR RECETA</h1>
+        <div className="name">
+          <label>Name</label>
           <input
             type="text"
             value={input.name}
@@ -158,9 +169,9 @@ export default function Form() {
             false
           )}
         </div>
-        <div>
+        <div className="summary">
           <label>Summary: </label>
-          <input
+          <textarea
             type="text"
             value={input.summary}
             name="summary"
@@ -174,17 +185,21 @@ export default function Form() {
             false
           )}
         </div>
-        <div>
+        <div className="image">
           <label>Image: </label>
           <input
-            type="text"
+            type="url"
             value={input.image}
             name="image"
             onChange={handlerChange}
           />
+          {input.image ? (
+            <img className="prevImg" src={input.image} alt="" />
+          ) : (
+            false
+          )}
         </div>
-        <div>
-          <h4>{input.healthyScore}</h4>
+        <div className="healthyScore">
           <label>HealthyScore : {input.healthyScore}</label>
           <input
             type="range"
@@ -196,27 +211,25 @@ export default function Form() {
             onChange={handlerChange}
           ></input>
         </div>
-        <div>
+        <div className="dishTypes">
           <select name="dishTypes" onChange={(e) => handlerChange(e)}>
             {dishTypes.map((dt) => (
               <option value={dt}>{dt}</option>
             ))}
           </select>
           <div>
-            <ul>
-              {input.dishTypes.map((el) => (
-                <li>
-                  {el}
-                  <button value={el} onClick={(e) => handlerdelete(e)}>
-                    X
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {input.dishTypes.map((el) => (
+              <p>
+                {el}
+                <button value={el} onClick={(e) => handlerdelete(e)}>
+                  x
+                </button>
+              </p>
+            ))}
           </div>
         </div>
-        <div>
-          <div>
+        <div className="allSteps">
+          <div className="nsteps">
             <label>How many steps does the recipe have? </label>
             <input
               type="number"
@@ -228,19 +241,20 @@ export default function Form() {
             />
           </div>
           {steps.arrSteps?.map((e) => (
-            <div>
-              <label>Step: {e.number} </label>
-              <input
+            <div className="steps">
+              <label>Step: {e.number}</label>
+              <textarea
                 type="text"
                 value={e.step}
                 name="steps"
                 onChange={handlerChange}
                 id={e.number}
-              ></input>
+              />
             </div>
           ))}
         </div>
-        <div>
+        <label>Type of Diet</label>
+        <div className="allDiets">
           {diets?.map((dt) => (
             <label>
               <input
@@ -253,8 +267,12 @@ export default function Form() {
             </label>
           ))}
         </div>
-        <button type="submit" disabled={errorButton ? true : false}>
-          Create
+        <button
+          className={!errorButton ? "submit" : "disabled"}
+          type="submit"
+          disabled={errorButton ? true : false}
+        >
+          <span>Create</span>
         </button>
       </form>
     </div>

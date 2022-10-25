@@ -7,6 +7,7 @@ import {
   GET_DIET,
   GET_RECIPES,
   CLEAR_DETAILS,
+  GET_BYNAME_ERROR,
 } from "./actions";
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
   detail: [],
   diet: [],
   recipes: [],
+  error: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -35,6 +37,12 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         allRecipes: action.payload,
+      };
+
+    case GET_BYNAME_ERROR:
+      return {
+        ...state,
+        error: { search: action.payload },
       };
 
     case GET_DIET:
@@ -97,11 +105,16 @@ export default function rootReducer(state = initialState, action) {
                 ? e.diets.includes(action.payload)
                 : e.diets.map((e) => e.name).includes(action.payload);
             });
-      console.log(filterDiets);
-      return {
-        ...state,
-        allRecipes: filterDiets,
-      };
+
+      return filterDiets.length
+        ? {
+            ...state,
+            allRecipes: filterDiets,
+          }
+        : {
+            ...state,
+            error: { diet: action.payload },
+          };
     }
 
     default:

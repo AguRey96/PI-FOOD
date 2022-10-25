@@ -2,6 +2,7 @@ import axios from "axios";
 export const GET_RECIPES = "GET_RECIPES";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_BYNAME = "GET_BYNAME";
+export const GET_BYNAME_ERROR = "GET_BYNAME_ERROR";
 export const GET_DIET = "GET_DIET";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const CLEAR_DETAILS = "CLEAR_DETAILS";
@@ -25,10 +26,14 @@ export const getDetail = (id) => {
 
 export const getRecipeByName = (name) => {
   return async (dispatch) => {
-    let response = await axios.get(
-      `http://localhost:3001/recipes?name=${name}`
-    );
-    return dispatch({ type: GET_BYNAME, payload: response.data });
+    try {
+      let response = await axios.get(
+        `http://localhost:3001/recipes?name=${name}`
+      );
+      return dispatch({ type: GET_BYNAME, payload: response.data });
+    } catch (error) {
+      return dispatch({ type: GET_BYNAME_ERROR, payload: name });
+    }
   };
 };
 

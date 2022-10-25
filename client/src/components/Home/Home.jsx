@@ -6,17 +6,21 @@ import {
   getRecipes,
   sortByHealtyScore,
   sortByName,
+  getDiet,
 } from "../../redux/actions";
 import Card from "../Card/Card";
 import SearchBar from "../SearchBar/SearchBar";
 import Paginado from "../Paginado/Paginado";
 import Loading from "../Loader/Loadign";
+import Error from "../Error/Error";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const allRecipes = state.allRecipes;
   const { diets } = state.diet;
+  const error = state.error;
 
   /* PAGINADO */
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,12 +42,8 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getRecipes());
+    dispatch(getDiet());
   }, [dispatch]);
-
-  const handlerClick = (e) => {
-    e.preventDefault();
-    dispatch(getRecipes());
-  };
 
   const handlerFilter = (e) => {
     if (e.target.name === "sortScore")
@@ -55,71 +55,91 @@ export default function Home() {
   };
 
   return (
-    <div>
-      {!allRecipes.length ? (
-        <Loading />
+    <div className={allRecipes.length ? "home" : "Loading"}>
+      {!allRecipes.length || error.diet || error.search ? (
+        <>
+          {!error.diet && !error.search ? <Loading /> : <Error error={error} />}
+        </>
       ) : (
         <>
-          <div>
-            <SearchBar />
-          </div>
-          <div>
-            <h1> Comidas wachin</h1>
-            <button onClick={handlerClick}>Reload recipes</button>
-            <Link to="/create">
-              <button>Create</button>
-            </Link>
+          <div className="sBar">
+            <SearchBar page={setCurrentPage} />
           </div>
 
           {/* filtros */}
-          <div>
-            {/* Alfabeticamente */}
-            <select name="sortName" onChange={handlerFilter}>
-              <option disabled selected>
-                Sort Names
-              </option>
-              <option value="A-Z">Az</option>
-              <option value="Z-A">Za</option>
-            </select>
-          </div>
-
-          <div>
-            {/* Dietas */}
-            <select
-              name="filterByDiets"
-              defaultValue={"All"}
-              onChange={handlerFilter}
-            >
-              <option value="All">All Diets</option>
-              {diets?.map((dt) => (
-                <option value={dt.name}>{dt.name}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
+          <div className="filters">
             {/* HealtScore */}
-            <select name="sortScore" onChange={handlerFilter}>
-              <option disabled selected>
-                Sort Score
-              </option>
-              <option value="Asc">Ascendent</option>
-              <option value="Desc">Descendent</option>
-            </select>
+            <div>
+              <select
+                className="sortScore"
+                name="sortScore"
+                onChange={handlerFilter}
+              >
+                <option disabled selected>
+                  Sort by Healthy Score
+                </option>
+                <option value="Asc">Ascendent</option>
+                <option value="Desc">Descendent</option>
+              </select>
+            </div>
+            {/* Alfabeticamente */}
+            <div>
+              <select
+                className="sortName"
+                name="sortName"
+                onChange={handlerFilter}
+              >
+                <option disabled selected>
+                  Sort Names
+                </option>
+                <option value="A-Z">Az</option>
+                <option value="Z-A">Za</option>
+              </select>
+            </div>
+            {/* Dietas */}
+            <div>
+              <select
+                className="filterDiets"
+                name="filterByDiets"
+                defaultValue={"All"}
+                onChange={handlerFilter}
+              >
+                <option value="All">All Diets</option>
+                {diets?.map((dt) => (
+                  <option value={dt.name}>{dt.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="refresh">
+              <button
+                onClick={() => window.location.reload()}
+                className="reload"
+              >
+                <span>Reload</span>
+              </button>
+            </div>
           </div>
 
-          <div>
+          <div className="pag">
             <Paginado
+              key={currentPage}
               numLength={numLength}
               paginado={paginado}
               prevPage={prevPage}
               nextPage={nextPage}
+              currentPage={currentPage}
             />
           </div>
-          <div>
+          <div className="grid">
             {currentCards?.map((receta) => (
-              <Link key={receta.id} to={`/recipes/${receta.id}`}>
+              <Link
+                className="link"
+                key={receta.id}
+                to={`/recipes/${receta.id}`}
+              >
                 <Card
+                  key={receta.id}
                   name={receta.name}
                   image={receta.image}
                   diets={receta.diets}
@@ -127,6 +147,16 @@ export default function Home() {
                 />
               </Link>
             ))}
+          </div>
+          <div className="pag2">
+            <Paginado
+              key={currentPage}
+              numLength={numLength}
+              paginado={paginado}
+              prevPage={prevPage}
+              nextPage={nextPage}
+              currentPage={currentPage}
+            />
           </div>
         </>
       )}

@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+
 import { Link } from "react-router-dom";
-import { getDiet } from "../../redux/actions";
+
+import "./LandingPage.css";
 
 export default function LandingPage() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getDiet());
-  }, []);
   return (
-    <div>
+    <div className="main">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="text">
+        <div className="lineOne">Are you looking</div>
+        <div className="lineTwo">for a</div>
+        <div className="lineThree">recipe ?</div>
+      </div>
+      <br></br>
       <Link to="/home">
-        <button>Wealcome</button>
+        <button className="button">
+          <span>Click Here </span>
+        </button>
       </Link>
     </div>
   );

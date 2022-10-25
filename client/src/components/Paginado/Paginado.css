@@ -1,0 +1,107 @@
+.all {
+  display: flex;
+  border-radius: 5px;
+  margin-top: 10px;
+  background: #ffffff47;
+  padding: 1px 5px 1px 5px;
+}
+
+.all button:after {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: block;
+  margin: 0px;
+  height: 2px;
+  width: 0px;
+  transition: all 0.3s;
+}
+
+.all button:hover:after {
+  width: 100%;
+  background: wheat;
+}
+
+.prev {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: black;
+}
+.prev span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.prev span:after {
+  content: "\00ab";
+  position: absolute;
+  opacity: 0;
+  top: -1px;
+  left: -5px;
+  transition: 0.5s;
+}
+
+.prev:hover span {
+  padding-left: 10px;
+}
+
+.prev:hover span:after {
+  opacity: 1;
+  left: 5;
+}
+
+.next {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: black;
+}
+
+.next span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.next span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: -1px;
+  right: -5px;
+  transition: 0.5s;
+}
+
+.next:hover span {
+  padding-right: 10px;
+}
+
+.next:hover span:after {
+  opacity: 1;
+  right: 5;
+}
+
+.number {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: black;
+  margin-right: 1px;
+  margin-left: 1px;
+  cursor: pointer;
+}
+
+.number:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.active {
+  background: wheat;
+}

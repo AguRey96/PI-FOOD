@@ -1,0 +1,116 @@
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../../Images/LandingPage.png);
+  background-size: 110%;
+  background-repeat: repeat-y;
+  animation: animatedBg 25s linear alternate infinite;
+}
+
+@keyframes animatedBg {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 50% 10%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  margin: 5rem 0 1rem 0;
+}
+
+.lineOne {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+  width: 50%;
+  transition-delay: 0.2s;
+  transition: 0.4s ease in;
+  animation: txtFlyIn 0.3s linear;
+}
+.lineTwo {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+  width: 50%;
+  margin: 5px 0;
+  transition-delay: 0.4s;
+  transition: 0.6s ease in;
+  animation: txtFlyIn 0.6s linear;
+}
+.lineThree {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+  width: 50%;
+  transition-delay: 0.6s;
+  transition: 0.8s ease in;
+  animation: txtFlyIn 0.9s linear;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: rgba(38, 231, 48, 0.85);
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 28px;
+  padding: 15px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  animation: fadeIn 2s linear;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes txtFlyIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

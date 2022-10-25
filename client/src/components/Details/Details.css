@@ -1,0 +1,121 @@
+.allDetail {
+  background-image: url(../../Images/Home.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 0 10px 0;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -5px -8px 13px 9px rgb(0 0 0 / 40%);
+  padding-left: 10px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+.nameD {
+  font-size: 50px;
+}
+
+.first {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.first img {
+  width: 55%;
+  border-radius: 20px;
+
+  box-shadow: 3px -2px 20px 0px black;
+}
+
+.first ul {
+  list-style-type: none;
+  padding: 1px;
+  text-transform: capitalize;
+}
+
+.detail h4 {
+  text-decoration: underline;
+  font-size: large;
+}
+
+.dietT {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  border-radius: 15px;
+  box-shadow: 3px -2px 20px 0px black;
+  background-color: rgb(255 230 109 / 48%);
+  height: fit-content;
+}
+.diet {
+  display: flex;
+}
+
+.dishT {
+  display: flex;
+  flex-direction: column;
+  width: 12%;
+  border-radius: 15px;
+  box-shadow: 3px -2px 20px 0px black;
+  background-color: rgb(255 230 109 / 48%);
+  height: fit-content;
+}
+
+.dish {
+  display: flex;
+}
+
+.hS {
+  width: 10%;
+  height: fit-content;
+  border-radius: 15px;
+  box-shadow: 3px -2px 20px 0px black;
+  background-color: rgb(255 230 109 / 48%);
+}
+
+.second {
+  box-shadow: 3px -2px 20px 0px black;
+  background-color: rgb(255 230 109 / 48%);
+  border-radius: 15px;
+  margin: 25px 25px 20px 10px;
+}
+
+.second h4 {
+  font-size: 22px;
+}
+.summaryD {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 10px 0px 5px;
+  text-align: initial;
+}
+.summaryD p {
+  margin-top: 0px;
+  font-size: 17px;
+}
+
+.stepsD {
+  display: flex;
+  flex-direction: column;
+  text-align: initial;
+  margin: 0px 10px 0px 5px;
+}
+
+.stepsD p {
+  margin-top: 0px;
+  font-size: 17px;
+}

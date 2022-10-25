@@ -1,0 +1,106 @@
+.bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.barTitle {
+  position: absolute;
+}
+.barTitle a {
+  color: #000;
+}
+
+.search {
+  width: 30%;
+  position: relative;
+  left: 9.5%;
+}
+.search input {
+  display: inline-block;
+  width: 40%;
+  padding: 3px 7px 5px 0;
+  height: 20px;
+
+  background: #ffffff;
+  box-shadow: 0px 1px 20px 2px #d2691e6b;
+  font-size: 1em;
+  color: #000;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  transition: 0.5s;
+}
+
+.search input:hover {
+  width: 60%;
+  padding-right: 10%;
+}
+
+.search input:focus {
+  width: 60%;
+  padding-right: 10%;
+}
+
+.search button {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  height: 30px;
+  border-radius: 12px;
+  background-color: wheat;
+  position: relative;
+  right: 15%;
+  cursor: pointer;
+  box-shadow: 0px 1px 20px 2px #d2691e6b;
+}
+.btn {
+  width: 10%;
+}
+.btnCreate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 36%;
+  margin: 15px 0 10px 0;
+  padding: 10px;
+  height: 35px;
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid rgb(167, 166, 166);
+  border-radius: 12px;
+  background-color: wheat;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0px 1px 20px 2px #d2691e6b;
+  transition: 1s;
+}
+.btnCreate span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 1s;
+}
+
+.btnCreate:hover span {
+  padding-right: 15px;
+}
+
+.btnCreate span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: -1px;
+  right: -5px;
+  transition: 1s;
+}
+
+.btnCreate:hover span:after {
+  padding-left: 10px;
+  opacity: 1;
+}
+
+.btnCreate:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}

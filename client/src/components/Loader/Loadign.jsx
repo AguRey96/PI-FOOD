@@ -1,9 +1,11 @@
 import React from "react";
-
+import "./Load.css";
+import Loader from "../../Images/Loader.gif";
 export default function Loading() {
   return (
-    <>
-      <h1>CARGANDO</h1>
-    </>
+    <div className="LoaderBg">
+      <img src={Loader} alt="Loading..." />
+      <div className="backGif"> </div>
+    </div>
   );
 }
