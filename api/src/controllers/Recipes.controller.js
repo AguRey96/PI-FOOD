@@ -45,7 +45,7 @@ const postRecipe = async (
 ) => {
   console.log(healthyScore);
   if (!name || !summary) throw new Error("Missing data");
-  if (healthyScore <= 0 || healthyScore >= 100) throw new Error("Error pa");
+  if (healthyScore < 0 || healthyScore > 100) throw new Error("Error pa");
   if (/[^a-zA-Z, ]/g.test(name))
     throw new Error("Name could be letters, no symbols!");
 
