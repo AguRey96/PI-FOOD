@@ -7,9 +7,9 @@ export default function Error({ error }) {
       <div className="rotate">
         <div className="error">
           {error.diet ? (
-            <h1>No hay recetas de {error.diet}</h1>
+            <h1>There are no {error.diet} recipes</h1>
           ) : (
-            <h1>No hay una receta con el nombre {error.search}</h1>
+            <h1>There is no recipe with the name {error.search}</h1>
           )}
         </div>
         <div>
