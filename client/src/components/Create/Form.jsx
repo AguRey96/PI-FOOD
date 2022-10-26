@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRecipe, getDiet } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import {
-  validatorLengthImg,
-  validatorName,
-  validatorSummary,
-} from "./validatorFunctions";
+import { validatorName, validatorSummary } from "./validatorFunctions";
 import "./Form.css";
 
 export default function Form() {
@@ -142,8 +138,6 @@ export default function Form() {
     validatorName(data.name) && (error.name = validatorName(data.name));
     validatorSummary(data.summary) &&
       (error.summary = validatorSummary(data.summary));
-    validatorLengthImg(data.image) &&
-      (error.image = validatorLengthImg(data.image));
     return error;
   };
 
@@ -199,13 +193,7 @@ export default function Form() {
             name="image"
             onChange={handlerChange}
           />
-          {errorInput.image ? (
-            <p>
-              <small>{errorInput.image}</small>
-            </p>
-          ) : (
-            false
-          )}
+
           {input.image ? (
             <img className="prevImg" src={input.image} alt="" />
           ) : (

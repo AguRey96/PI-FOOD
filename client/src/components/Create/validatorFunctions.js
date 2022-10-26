@@ -7,8 +7,4 @@ const validatorSummary = (str) => {
   if (str.length < 2) return "The summary should be more longer";
 };
 
-const validatorLengthImg = (str) => {
-  if (str.length > 255) return "The URL is not valid";
-};
-
-export { validatorName, validatorSummary, validatorLengthImg };
+export { validatorName, validatorSummary };

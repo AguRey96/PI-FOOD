@@ -23,6 +23,7 @@ export default function Home() {
   const error = state.error;
 
   /* PAGINADO */
+
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(9);
   const lastCard = currentPage * cardsPerPage;
